@@ -11,10 +11,23 @@ def flatten_append(lst):
 	for sublst in lst:
 		results.extend(flatten_append(sublst))
 	return results
+	
 r = flatten_append(a)
 print(r)
 
+def flatten_append(lst):
+	results = []
+	try:
+		lst + 1
+	except TypeError:
+		for sublst in lst:
+			results.extend(flatten_append(sublst))
+	else:
+		results.append(lst)
+	return results
 
+r = flatten_append(a)
+print(r)
 
 
 def ccount(n):
