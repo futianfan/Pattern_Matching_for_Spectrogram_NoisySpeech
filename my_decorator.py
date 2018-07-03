@@ -1,7 +1,7 @@
 from time import sleep, ctime
 
 ###################### part I ######################
-
+'''
 def decorator1(func):
 	print('flag ')
 	x = 10
@@ -27,9 +27,10 @@ def foo(x):
 
 f = foo
 #print(ctime())
-a = f()
+a = f()'''
 ###################### part I ######################
 ###################### part II ######################
+'''
 class Coordinate:
 	def __init__(self,x,y):
 		self.x = x
@@ -69,6 +70,33 @@ def sub(a,b):
 one = Coordinate(10,20)
 two = Coordinate(30,20)
 print(sub(one,two))
+'''
 ###################### part II ######################
+
+###################### part III ######################
+
+from time import ctime, sleep
+
+def decorator4(func):
+	def wrapper():
+		print(func.__name__, ctime())
+		func()
+		#return func()   ## ************** ##
+	return wrapper
+
+@decorator4
+def getInfo():
+	return 'haha'
+
+print(getInfo())
+###################### part III ######################
+
+
+
+
+
+
+
+
 
 
