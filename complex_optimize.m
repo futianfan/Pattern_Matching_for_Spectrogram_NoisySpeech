@@ -1,3 +1,4 @@
+clear all;
 randn('seed', 6); % 8
 rand('seed', 7);
 J = 256;
@@ -14,6 +15,7 @@ step = 0.001;
 endn = pi;
 z = stt:step:endn;
 loss = zeros(length(z),1);
+f = @(x) sum(sum((abs(Y - exp(-1 * i * JK * x).* Z)).^2)); 
 minimum = inf;
 for j=1:length(z)
     loss(j) = f(z(j));
@@ -24,11 +26,11 @@ for j=1:length(z)
 end
 
 options=optimset('MaxIter',1e9,'TolFun',1e-15);
-f = @(x) sum(sum((abs(Y - exp(-1 * i * JK * x).* Z)).^2)); 
 x0 = minimum_x; %% init
-x_opt = fsolve(f,x0,options);
+x_opt = fsolve(f,x0,options);  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% this is the result
 
-%%% test
+%%%following is test
 f(x_opt) < f(minimum_x)
 step2 = abs(x_opt - minimum_x) / 1000;
 if x_opt < minimum_x
